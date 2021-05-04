@@ -55,10 +55,6 @@ void setup()
 
 void loop()
 {
-  // read encoders
-  knob1 = enc1.read();
-  knob2 = enc2.read();
-
   update_knobs();
 
   // read the buttons for high, if it's low, output a keyboard press
@@ -128,36 +124,27 @@ void loop()
 
 void update_knobs()
 {
+  // read encoders
+  knob1 = enc1.read();
+  knob2 = enc2.read();
+
   if (knob1 != old_knob1)
   {
     // if there's a difference in encoder movement from last pass, move the mouse
-    if (knob1 < old_knob1)
-    {
-      Mouse.move(0, -5);
-    }
-    else
-    {
-      Mouse.move(0, 5);
-    }
+    // if knob1 < old_knob1 then -5, else 5
+    Mouse.move((knob1 - old_knob1 < 0) ? -5 : 5, 0);
 
-    // if overflown, then write back to the encoder
     if ((old_knob1 = knob1) != knob1)
     {
       enc1.write(old_knob1);
     }
   }
+
   if (knob2 != old_knob2)
   {
-    if (knob2 > old_knob2)
-    {
-      Mouse.move(-5, 0);
-    }
-    else
-    {
-      Mouse.move(5, 0);
-    }
+    // if knob2 < old_knob2 then -5, else 5
+    Mouse.move(0, (knob2 - old_knob2 < 0) ? -5 : 5);
 
-    // if overflown, then write back to the encoder
     if ((old_knob2 = knob2) != knob2)
     {
       enc2.write(old_knob2);

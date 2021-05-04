@@ -1,4 +1,5 @@
 # sdvx_leonardo
+
 Arduino Leonardo code to make a Sound Voltex Controller
 
 ## INTRODUCTION
@@ -57,9 +58,9 @@ Button FX-R : "m"
 
 Button Start : "1"
 
-Encoder 1 : Mouse Y-Axis
+Encoder 1 : Mouse X-Axis
 
-Encoder 2 : Mouse X-Axis
+Encoder 2 : Mouse Y-Axis
 
 ## HOW IT WORKS
 
