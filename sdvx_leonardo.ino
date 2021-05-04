@@ -28,6 +28,28 @@ int16_t knob2 = 0;
 int8_t old_knob1 = 0;
 int8_t old_knob2 = 0;
 
+#define update_knobs()                                 \
+  {                                                    \
+    knob1 = enc1.read();                               \
+    knob2 = enc2.read();                               \
+    if (knob1 != old_knob1)                            \
+    {                                                  \
+      Mouse.move((knob1 - old_knob1 < 0) ? -5 : 5, 0); \
+      if ((old_knob1 = knob1) != knob1)                \
+      {                                                \
+        enc1.write(old_knob1);                         \
+      }                                                \
+    }                                                  \
+    if (knob2 != old_knob2)                            \
+    {                                                  \
+      Mouse.move(0, (knob2 - old_knob2 < 0) ? -5 : 5); \
+      if ((old_knob2 = knob2) != knob2)                \
+      {                                                \
+        enc2.write(old_knob2);                         \
+      }                                                \
+    }                                                  \
+  }
+
 void setup()
 {
   // set pins to read, and output high
@@ -119,35 +141,5 @@ void loop()
   else
   {
     Keyboard.release('1');
-  }
-}
-
-void update_knobs()
-{
-  // read encoders
-  knob1 = enc1.read();
-  knob2 = enc2.read();
-
-  if (knob1 != old_knob1)
-  {
-    // if there's a difference in encoder movement from last pass, move the mouse
-    // if knob1 < old_knob1 then -5, else 5
-    Mouse.move((knob1 - old_knob1 < 0) ? -5 : 5, 0);
-
-    if ((old_knob1 = knob1) != knob1)
-    {
-      enc1.write(old_knob1);
-    }
-  }
-
-  if (knob2 != old_knob2)
-  {
-    // if knob2 < old_knob2 then -5, else 5
-    Mouse.move(0, (knob2 - old_knob2 < 0) ? -5 : 5);
-
-    if ((old_knob2 = knob2) != knob2)
-    {
-      enc2.write(old_knob2);
-    }
   }
 }
