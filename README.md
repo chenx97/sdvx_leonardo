@@ -15,9 +15,9 @@ homebrew controllers.
 
 ## DEPENDENCIES
 
-`Encoder`
-`Mouse`
-`Keyboard`
+- `Encoder`
+- `Mouse`
+- `Keyboard`
 
 Install dependencies from arduino-cli or Arduino IDE.
 
