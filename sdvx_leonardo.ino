@@ -132,16 +132,18 @@ void update_knobs()
   {
     // if there's a difference in encoder movement from last pass, move the mouse
     // if knob1 < old_knob1 then -5, else 5
-    Mouse.move(((knob1 - old_knob1) >> 16 | 1) * 5, 0);
+    Mouse.move((knob1 - old_knob1 < 0) ? -5 : 5, 0);
+
     if ((old_knob1 = knob1) != knob1)
     {
       enc1.write(old_knob1);
     }
   }
+
   if (knob2 != old_knob2)
   {
-
-    Mouse.move(0, ((knob2 - old_knob2) >> 16 | 1) * 5);
+    // if knob2 < old_knob2 then -5, else 5
+    Mouse.move(0, (knob2 - old_knob2 < 0) ? -5 : 5);
 
     if ((old_knob2 = knob2) != knob2)
     {
