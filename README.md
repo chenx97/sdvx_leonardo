@@ -13,6 +13,22 @@ Arduino Leonardo. It takes 7 buttons and 2 rotary encoders and maps them to
 keyboard and mouse inputs. This allows us to play Sound Voltex/K-Shoot with our
 homebrew controllers.
 
+## DEPENDENCIES
+
+`Encoder`
+`Mouse`
+`Keyboard`
+
+Install dependencies from arduino-cli or Arduino IDE.
+
+If you are using arduino-cli, make sure you also have core `arduino:avr`
+installed. If not, you may run
+
+`arduino-cli core install arduino:avr`
+
+to get yourself ready to go.
+
+
 ## WIRING
 
 Here's how to correctly hook up the wires. Firstly, each button needs two
@@ -82,3 +98,4 @@ http://forum.arduino.cc/index.php/topic,72276.0.html -- Pushbuttons
 
 www.circuitsathome.com/mcu/reading-rotary-encoder-on-arduino -- Encoders;
 library needed for encoders
+

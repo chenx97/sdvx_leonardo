@@ -20,7 +20,7 @@
 #define BT_ST 10
 
 // encoders
-#include "Encoder.h"
+#include <Encoder.h>
 Encoder enc1(0, 1);
 Encoder enc2(2, 3);
 int16_t knob1 = 0;
